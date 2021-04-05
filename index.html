@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>repl.it</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/addons/p5.sound.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <div class='pop-slider'>
+                <label for="pop-size" style="font-family: 'Iceland', cursive; color: white">Population Size<br/></label>
+                    <input type="range" id="pop" name="scale" class="slider" min="2" max="300" step="1" value="25">
+            </div>
+            <div class='radius-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Radius<br/></label>
+                <input type="range" id="radius" name="scale" class="slider"
+                    min="0.5" max="10" step="0.5" value="0.5">
+            </div>
+            <div class='age-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Average Age<br/></label>
+                <input type="range" id="age" name="scale" class="slider"
+                    min="10" max="80" step="1" value="35">
+            </div>
+            <div class='community-radius-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Community Radius<br/></label>
+                <input type="range" id="comm-rad" name="scale" class="slider"
+                    min="10" max="500" step="1" value="300">
+            </div>
+            <div class='life-preserve-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Life Preservation<br/></label>
+                <input type="range" id="life-pres" name="scale" class="slider"
+                    min="1" max="10" step="1" value="5">
+            </div>
+            <div class='grow-community-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Grow Community<br/></label>
+                <input type="range" id="grow-comm" name="scale" class="slider"
+                    min="1" max="10" step="1" value="3">
+            </div>
+            <div class='lonliness-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Loneliness<br/></label>
+                <input type="range" id="lone" name="scale" class="slider"
+                    min="1" max="10" step="1" value="2">
+            </div>
+            <div class='lonliness-stress1-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Loneliness Stressor 1<br/></label>
+                <input type="range" id="lone-stress1" name="scale" class="slider"
+                    min="1" max="10" step="1" value="1">
+            </div>
+            <div class='lonliness-stress2-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Loneliness Stressor 2<br/></label>
+                <input type="range" id="lone-stress2" name="scale" class="slider"
+                    min="1" max="10" step="1" value="1">
+            </div>
+            <div class='reproduce-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Reproduction<br/></label>
+                <input type="range" id="repo" name="scale" class="slider"
+                    min="1" max="10" step="1" value="5">
+            </div>
+            <div class='repo-stress1-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Reproduction Stressor 1<br/></label>
+                <input type="range" id="repo-stress1" name="scale" class="slider"
+                    min="1" max="10" step="1" value="1">
+            </div>
+            <div class='repo-stress2-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Reproduction Stressor 2<br/></label>
+                <input type="range" id="repo-stress2" name="scale" class="slider"
+                    min="1" max="10" step="1" value="1">
+            </div>
+            <div class='comm-dist-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Community Distance<br/></label>
+                <input type="range" id="comm-dist" name="scale" class="slider"
+                    min="1" max="10" step="1" value="3">
+            </div>
+            <div class='overcrowd--slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Overcrowding<br/></label>
+                <input type="range" id="overcrowd" name="scale" class="slider"
+                    min="1" max="10" step="1" value="1">
+            </div>
+            <div class='overcrowd-stress1-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Overcrowding Stressor 1<br/></label>
+                <input type="range" id="overcrowd-stress1" name="scale" class="slider"
+                    min="1" max="10" step="1" value="1">
+            </div>
+            <div class='overcrowd-stress2-slider'>
+                <label for="radius" style="font-family: 'Iceland', cursive; color: white">Overcrowding Stressor 2<br/></label>
+                <input type="range" id="overcrowd-stress2" name="scale" class="slider"
+                    min="1" max="10" step="1" value="1">
+            </div>
+            <button id="reset-button" style="font-family: 'Iceland', cursive;">Reset Animation</button>
+            <button id="stop" style="font-family: 'Iceland', cursive;">Stop Animation</button>
+            <button id="start" style="font-family: 'Iceland', cursive;">Start Animation</button>
+        </div>
+        
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">☰ Edit Population</button>  
+  
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "30%";
+  document.getElementById("main").style.marginLeft = "30%";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+        <script src="class.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
+
+
